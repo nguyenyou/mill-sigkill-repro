@@ -1,0 +1,20 @@
+{
+    "workerCache": {
+        "mill.javalib.JvmWorkerModule/internalWorkerClassLoader": {
+            "identityHashCode": 1400546401,
+            "inputHash": -1973232535
+        },
+        "mill.javalib.JvmWorkerModule/internalWorker": {
+            "identityHashCode": 496956925,
+            "inputHash": -1907606737
+        }
+    },
+    "evalWatched": [
+        "/Users/tunguyen/Documents/GitHub/mill-sigkill-repro/repro/src",
+        "/Users/tunguyen/Documents/GitHub/mill-sigkill-repro/repro/compile-resources"
+    ],
+    "moduleWatched": [],
+    "classLoaderIdentity": null,
+    "runClasspath": [],
+    "runClasspathHash": 473519988
+}

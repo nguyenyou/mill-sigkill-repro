@@ -1,0 +1,11 @@
+{
+    "value": [
+        "-Xplugin:/Users/tunguyen/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/scalac-mill-moduledefs-plugin_3.8.2/0.13.1/scalac-mill-moduledefs-plugin_3.8.2-0.13.1.jar",
+        "-Xplugin:/Users/tunguyen/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/mill-runner-autooverride-plugin_3.8.2/1.1.5/mill-runner-autooverride-plugin_3.8.2-1.1.5.jar"
+    ],
+    "valueHash": -26459913,
+    "inputsHash": -263535160,
+    "millVersion": "1.1.5",
+    "millJvmVersion": "21.0.10",
+    "classLoaderSigHash": 2098141174
+}

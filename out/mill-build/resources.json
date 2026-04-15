@@ -1,0 +1,11 @@
+{
+    "value": [
+        "ref:v0:c984eca8:/Users/tunguyen/Documents/GitHub/mill-sigkill-repro/mill-build/resources",
+        "ref:v0:30791d3d:/Users/tunguyen/Documents/GitHub/mill-sigkill-repro/out/mill-build/generatedScriptSources.dest/resources"
+    ],
+    "valueHash": -1564956576,
+    "inputsHash": -346549421,
+    "millVersion": "1.1.5",
+    "millJvmVersion": "21.0.10",
+    "classLoaderSigHash": 2098141174
+}

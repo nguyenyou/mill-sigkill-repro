@@ -1,0 +1,72 @@
+{
+  "repro.compile": {
+    "repro.scalaVersion": {},
+    "repro.javacOptions": {},
+    "repro.mandatoryJavacOptions": {},
+    "mill.javalib.JvmWorkerModule/internalWorker": {
+      "mill.javalib.CoursierConfigModule/coursierEnv": {},
+      "mill.javalib.JvmWorkerModule/repositories": {},
+      "mill.javalib.JvmWorkerModule/checkGradleModules": {},
+      "mill.javalib.JvmWorkerModule/classpath": {},
+      "mill.javalib.JvmWorkerModule/internalWorkerClassLoader": {},
+      "mill.javalib.JvmWorkerModule/zincLogDebug": {},
+      "mill.javalib.JvmWorkerModule/useFileLocks": {}
+    },
+    "repro.upstreamCompileOutput": {},
+    "repro.allSourceFiles": {
+      "repro.allSources": {
+        "repro.sources": {},
+        "repro.generatedSources": {}
+      },
+      "repro.wrappedSources": {}
+    },
+    "repro.compileClasspath": {
+      "repro.resolvedMvnDeps": {
+        "repro.resolvedMvnDeps.super.javalib.JavaModule": {
+          "repro.resolvedDepsWarnNonPlatform": {},
+          "repro.mvnDeps": {},
+          "repro.mandatoryMvnDeps": {
+            "repro.mandatoryMvnDeps.super.javalib.JavaModule": {}
+          },
+          "repro.compileMvnDeps": {},
+          "repro.runMvnDeps": {},
+          "repro.bomMvnDeps": {},
+          "repro.depManagement": {},
+          "repro.transitiveCoursierProjects": {},
+          "repro.artifactTypes": {}
+        }
+      },
+      "repro.localCompileClasspath": {
+        "repro.unmanagedClasspath": {},
+        "repro.unmanagedClasspathExistenceCheck": {},
+        "repro.compileResources": {}
+      }
+    },
+    "repro.allScalacOptions": {
+      "repro.mandatoryScalacOptions": {},
+      "repro.enablePluginScalacOptions": {},
+      "repro.scalacOptions": {}
+    },
+    "repro.scalaCompilerClasspath": {
+      "repro.platformSuffix": {},
+      "repro.scalaLibraryMvnDeps": {},
+      "repro.repositories": {},
+      "repro.checkGradleModules": {}
+    },
+    "repro.scalacPluginClasspath": {
+      "repro.scalacPluginMvnDeps": {}
+    },
+    "repro.scalaCompilerBridge": {},
+    "repro.zincIncrementalCompilation": {},
+    "repro.zincAuxiliaryClassFileExtensions": {
+      "repro.zincAuxiliaryClassFileExtensions.super.javalib.JavaModule": {}
+    },
+    "repro.javaHome": {
+      "repro.jvmVersion": {
+        "repro.jvmId": {}
+      },
+      "repro.jvmIndexVersion": {}
+    },
+    "repro.zincReportCachedProblems": {}
+  }
+}
