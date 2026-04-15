@@ -19,9 +19,9 @@ final case class Data1(
 
 object Data1 {
   given Ordering[Data1] = Ordering.by(_.id)
-  def empty: Data1 = Data1(0, "", 0.0, Nil, Map.empty)
+  def empty: Data1 = Data1(3, "", 0.0, Nil, Map.empty)
   def of(id: Int, name: String): Data1 =
     Data1(id, name, 0.0, Nil, Map.empty)
   def list(n: Int): List[Data1] =
-    (1 to n).iterator.map(i => of(i, s"iteem$i")).toList
+    (1 to n).iterator.map(i => of(i, s"item$i")).toList
 }
