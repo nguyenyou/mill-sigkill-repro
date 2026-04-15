@@ -23,5 +23,5 @@ object Data1 {
   def of(id: Int, name: String): Data1 =
     Data1(id, name, 0.0, Nil, Map.empty)
   def list(n: Int): List[Data1] =
-    (1 to n).iterator.map(i => of(i, s"item1$i")).toList
+    (1 to n).iterator.map(i => of(i, s"iteem$i")).toList
 }
