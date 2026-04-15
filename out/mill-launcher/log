@@ -609,3 +609,51 @@
 2026-04-15T03:23:40Z Connecting: 57835
 2026-04-15T03:23:40Z runWithConnection (RPC): Launched(57835,Some(Socket[addr=localhost/127.0.0.1,port=57835,localport=58093]),OsProcess(74561))
 2026-04-15T03:23:40Z runWithConnection exit code: 0
+2026-04-15T03:24:03Z launchOrConnectToServer: mill.client.lock.Locks@386cff7b
+2026-04-15T03:24:03Z Acquiring the launcher lock: PidLock{@126a2223, path='/Users/tunguyen/Documents/GitHub/mill-sigkill-repro/out/mill-daemon/launcherLock'}
+2026-04-15T03:24:03Z launchOrConnectToServer attempt
+2026-04-15T03:24:03Z Checking if the daemon lock is available: PidLock{@6554d196, path='/Users/tunguyen/Documents/GitHub/mill-sigkill-repro/out/mill-daemon/daemonLock'}
+2026-04-15T03:24:03Z The daemon lock is not available, there is already a server running.
+2026-04-15T03:24:03Z Trying to read the process ID of a running daemon from /Users/tunguyen/Documents/GitHub/mill-sigkill-repro/out/mill-daemon/processId
+2026-04-15T03:24:03Z Read PID: 74561
+2026-04-15T03:24:03Z Reading server port: /Users/tunguyen/Documents/GitHub/mill-sigkill-repro/out/mill-daemon
+2026-04-15T03:24:03Z Read server port
+2026-04-15T03:24:03Z Connecting: 57835
+2026-04-15T03:24:03Z runWithConnection (RPC): Launched(57835,Some(Socket[addr=localhost/127.0.0.1,port=57835,localport=58118]),OsProcess(74561))
+2026-04-15T03:24:03Z runWithConnection exit code: 0
+2026-04-15T03:24:04Z launchOrConnectToServer: mill.client.lock.Locks@1dfe237f
+2026-04-15T03:24:04Z Acquiring the launcher lock: PidLock{@208167ff, path='/Users/tunguyen/Documents/GitHub/mill-sigkill-repro/out/mill-daemon/launcherLock'}
+2026-04-15T03:24:04Z launchOrConnectToServer attempt
+2026-04-15T03:24:04Z Checking if the daemon lock is available: PidLock{@41158c53, path='/Users/tunguyen/Documents/GitHub/mill-sigkill-repro/out/mill-daemon/daemonLock'}
+2026-04-15T03:24:04Z The daemon lock is not available, there is already a server running.
+2026-04-15T03:24:04Z Trying to read the process ID of a running daemon from /Users/tunguyen/Documents/GitHub/mill-sigkill-repro/out/mill-daemon/processId
+2026-04-15T03:24:04Z Read PID: 74561
+2026-04-15T03:24:04Z Reading server port: /Users/tunguyen/Documents/GitHub/mill-sigkill-repro/out/mill-daemon
+2026-04-15T03:24:04Z Read server port
+2026-04-15T03:24:04Z Connecting: 57835
+2026-04-15T03:24:04Z runWithConnection (RPC): Launched(57835,Some(Socket[addr=localhost/127.0.0.1,port=57835,localport=58122]),OsProcess(74561))
+2026-04-15T03:24:04Z runWithConnection exit code: 0
+2026-04-15T03:24:08Z launchOrConnectToServer: mill.client.lock.Locks@139fa0be
+2026-04-15T03:24:08Z Acquiring the launcher lock: PidLock{@24ed54f5, path='/Users/tunguyen/Documents/GitHub/mill-sigkill-repro/out/mill-daemon/launcherLock'}
+2026-04-15T03:24:08Z launchOrConnectToServer attempt
+2026-04-15T03:24:08Z Checking if the daemon lock is available: PidLock{@5beb5218, path='/Users/tunguyen/Documents/GitHub/mill-sigkill-repro/out/mill-daemon/daemonLock'}
+2026-04-15T03:24:08Z The daemon lock is not available, there is already a server running.
+2026-04-15T03:24:08Z Trying to read the process ID of a running daemon from /Users/tunguyen/Documents/GitHub/mill-sigkill-repro/out/mill-daemon/processId
+2026-04-15T03:24:08Z Read PID: 74561
+2026-04-15T03:24:08Z Reading server port: /Users/tunguyen/Documents/GitHub/mill-sigkill-repro/out/mill-daemon
+2026-04-15T03:24:08Z Read server port
+2026-04-15T03:24:08Z Connecting: 57835
+2026-04-15T03:24:08Z runWithConnection (RPC): Launched(57835,Some(Socket[addr=localhost/127.0.0.1,port=57835,localport=58128]),OsProcess(74561))
+2026-04-15T03:24:08Z runWithConnection exit code: 0
+2026-04-15T03:24:09Z launchOrConnectToServer: mill.client.lock.Locks@55659124
+2026-04-15T03:24:09Z Acquiring the launcher lock: PidLock{@2f813a29, path='/Users/tunguyen/Documents/GitHub/mill-sigkill-repro/out/mill-daemon/launcherLock'}
+2026-04-15T03:24:09Z launchOrConnectToServer attempt
+2026-04-15T03:24:09Z Checking if the daemon lock is available: PidLock{@784f1842, path='/Users/tunguyen/Documents/GitHub/mill-sigkill-repro/out/mill-daemon/daemonLock'}
+2026-04-15T03:24:09Z The daemon lock is not available, there is already a server running.
+2026-04-15T03:24:09Z Trying to read the process ID of a running daemon from /Users/tunguyen/Documents/GitHub/mill-sigkill-repro/out/mill-daemon/processId
+2026-04-15T03:24:09Z Read PID: 74561
+2026-04-15T03:24:09Z Reading server port: /Users/tunguyen/Documents/GitHub/mill-sigkill-repro/out/mill-daemon
+2026-04-15T03:24:09Z Read server port
+2026-04-15T03:24:09Z Connecting: 57835
+2026-04-15T03:24:09Z runWithConnection (RPC): Launched(57835,Some(Socket[addr=localhost/127.0.0.1,port=57835,localport=58130]),OsProcess(74561))
+2026-04-15T03:24:09Z runWithConnection exit code: 0
