@@ -31,17 +31,40 @@ object repro extends ScalaModule {
 
 Five trivial source files under `repro/src/` are enough; even a single file works for the toggle reproduction below. Any Scala 3 `ScalaModule` will do.
 
-### Repro A — alternating shells (the original symptom)
+### Cycle
 
-1. From an **interactive terminal** (TTY, color enabled): `./mill repro.compile`. Expect a full compile.
-2. Edit one source file (a real code change, not just a comment).
-3. From a **non-TTY subprocess** (e.g. a script, an editor's "run command" tool, a CI step): `./mill repro.compile`.
-4. Observed: `compiling N Scala sources` (N = total sources in the module). Every `.class` and `.tasty` file gets a new inode.
-5. Edit one source file again.
-6. From the interactive terminal: `./mill repro.compile`.
-7. Observed: again `compiling N Scala sources`. Full rebuild.
+This is the cycle I actually executed against the minimal `build.mill` above. Two clients are involved against the same Mill background daemon (PID stable, verified via `out/mill-daemon/processId` and `ps`):
 
-In contrast, repeating step 6 from the same shell that did step 5 gives `compiling 1 Scala source`.
+- **Client B** — [Claude Code](https://www.anthropic.com/claude-code)'s `Bash` tool, which spawns a non-TTY subprocess. `mainInteractive = false` ⇒ `colored = false`. (Any non-TTY caller behaves identically: an editor's "run shell command" action, a CI runner, a script invoked from another script, etc.)
+- **Client T** — interactive zsh terminal. `mainInteractive = true` ⇒ `colored = true`.
+
+Starting from a clean `out/`:
+
+| # | Client | Action                                  | Mill output                                           | Notes                                                                                                                   |
+|---|--------|-----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| 1 | B      | `./mill repro.compile`                  | `compiling 5 Scala sources`                           | Cold start. Bakes `colored=false` `MiniSetup` (with `-color:never`) into `out/repro/compile.dest/zinc`.                 |
+| 2 | —      | edit one line in `Data1.scala`           | —                                                     | Real code change, not a comment.                                                                                        |
+| 3 | B      | `./mill repro.compile`                  | `compiling 1 Scala source`                            | Same TTY state as step 1. Zinc `MiniSetup` matches → true incremental. Data2–5 inodes preserved.                        |
+| 4 | T      | `./mill repro.compile` (no edit)        | *(no `compiling …` line — task body skipped)*         | **The smoking-gun cache hit.** Mill's `inputsHash` is unchanged (it does not include `colored`), so the compile task body is not re-run. The `colored` mismatch is sitting latent on disk, **invisible to Mill**. |
+| 5 | —      | edit one line in `Data1.scala`           | —                                                     |                                                                                                                         |
+| 6 | T      | `./mill repro.compile`                  | `compiling 5 Scala sources`                           | The edit forces the body to re-run. Now the worker sees `colored=true`, builds `scalacOptions` *without* `-color:never`, hands them to Zinc; Zinc compares against the stored `MiniSetup` (which has `-color:never`), declares mismatch, cold-recompiles all 5 sources. Every `.class`, `.tasty`, and the `zinc` analysis file get **new inodes**, but the bytes for Data2–5 are byte-identical to the previous bytes. |
+
+Step 4 is the part that distinguishes this from a "Mill cache invalidation" story: Mill's input layer is genuinely happy across clients. The corruption is purely in the on-disk Zinc analysis, and it stays latent until the next thing forces the compile body to actually run.
+
+### Fix verification
+
+After applying the workaround (`def scalacOptions = Seq("-color:never")` in `build.mill`) and clearing `out/`, I re-ran the exact same Repro A cycle:
+
+| # | Client | Action                                  | Mill output (with fix)        |
+|---|--------|-----------------------------------------|-------------------------------|
+| 1 | B      | `./mill repro.compile`                  | `compiling 5 Scala sources`   |
+| 2 | —      | edit one line in `Data1.scala`           | —                             |
+| 3 | B      | `./mill repro.compile`                  | `compiling 1 Scala source`    |
+| 4 | T      | `./mill repro.compile` (no edit)        | *(no-op cache hit)*           |
+| 5 | —      | edit one line in `Data1.scala`           | —                             |
+| 6 | T      | `./mill repro.compile`                  | **`compiling 1 Scala source`** |
+
+Step 6 is the key: with `scalacOptions` pinned, the conditional injection at `ZincWorker.scala:474` is bypassed for both clients, the `MiniSetup` is identical regardless of `colored`, and Zinc's incremental analysis stays valid across the TTY transition.
 
 ## Expected
 
