@@ -43,30 +43,6 @@ Five trivial source files under `repro/src/` are enough; even a single file work
 
 In contrast, repeating step 6 from the same shell that did step 5 gives `compiling 1 Scala source`.
 
-### Repro B — single shell, just toggle `--color` (definitive)
-
-This isolates the bug to a single variable and removes all "two shells / two envs" noise:
-
-```bash
-# Bake a known color state into the analysis
-./mill --color=true  repro.compile         # full compile, colored=true
-
-# Touch one source
-sed -i '' 's/Data1(0,/Data1(1,/' repro/src/generated/Data1.scala
-
-# Same daemon, same shell, same env, only --color flipped
-./mill --color=false repro.compile         # ⇒ "compiling 5 Scala sources"
-```
-
-And the symmetric control:
-
-```bash
-sed -i '' 's/Data1(1,/Data1(2,/' repro/src/generated/Data1.scala
-./mill --color=false repro.compile         # ⇒ "compiling 1 Scala source"
-```
-
-So flipping `--color` between two compile invocations is sufficient to trigger a full rebuild on the next source edit. No second shell required.
-
 ## Expected
 
 After editing one source file, `./mill repro.compile` reports:
@@ -138,17 +114,11 @@ This also explains why none of Mill's input-tracking surfaces show anything wron
 
 ## Workarounds
 
-Any one of the following resolves the symptom:
-
-1. Pin scalacOptions in `build.mill`, which makes `scalacOptions.exists(_.startsWith("-color:"))` true and bypasses the conditional injection at `ZincWorker.scala:474`:
-   ```scala
-   def scalacOptions = Seq("-color:never")
-   ```
-   Verified end-to-end on the minimal repro: alternating clients with single-file edits now consistently produces `compiling 1 Scala source`, and `compile.dest/classes/*.class` inodes are preserved for unchanged files.
-2. Always invoke Mill with an explicit `--color=true` or `--color=false` from every client.
-3. Force `colored` to the same value via `FORCE_COLOR=1` (or `NO_COLOR=1`) in every shell that ever invokes Mill against this workspace.
-
-Workaround 1 is the only one that doesn't require coordinating every caller of Mill.
+Pin scalacOptions in `build.mill`, which makes `scalacOptions.exists(_.startsWith("-color:"))` true and bypasses the conditional injection at `ZincWorker.scala:474`:
+```scala
+def scalacOptions = Seq("-color:never")
+```
+Verified end-to-end on the minimal repro: alternating clients with single-file edits now consistently produces `compiling 1 Scala source`, and `compile.dest/classes/*.class` inodes are preserved for unchanged files.
 
 ## Suggested upstream fix
 
