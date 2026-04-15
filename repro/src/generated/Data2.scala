@@ -1,5 +1,5 @@
 package generated
-
+// probe-edit-claude-xyz
 final case class Data2(
     id: Int,
     name: String,

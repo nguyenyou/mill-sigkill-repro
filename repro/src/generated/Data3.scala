@@ -1,4 +1,5 @@
 package generated
+// probe-marker-test-claude
 
 final case class Data3(
     id: Int,

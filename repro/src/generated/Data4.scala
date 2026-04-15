@@ -1,4 +1,5 @@
 package generated
+// probe-edit-4
 
 final case class Data4(
     id: Int,
