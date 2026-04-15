@@ -1,0 +1,27 @@
+package generated
+
+final case class Data875(
+    id: Int,
+    name: String,
+    value: Double,
+    tags: List[String],
+    meta: Map[String, String]
+) {
+  def upper: Data875 = copy(name = name.toUpperCase)
+  def scale(k: Double): Data875 = copy(value = value * k)
+  def addTag(t: String): Data875 = copy(tags = t :: tags)
+  def put(k: String, v: String): Data875 = copy(meta = meta.updated(k, v))
+  def merge(other: Data875): Data875 = copy(
+      tags = (tags ++ other.tags).distinct,
+      meta = meta ++ other.meta
+  )
+}
+
+object Data875 {
+  given Ordering[Data875] = Ordering.by(_.id)
+  def empty: Data875 = Data875(0, "", 0.0, Nil, Map.empty)
+  def of(id: Int, name: String): Data875 =
+    Data875(id, name, 0.0, Nil, Map.empty)
+  def list(n: Int): List[Data875] =
+    (1 to n).iterator.map(i => of(i, s"item-$i")).toList
+}
