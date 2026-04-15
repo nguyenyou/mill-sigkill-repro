@@ -10,9 +10,9 @@
         }
     },
     "evalWatched": [
-        "/Users/tunguyen/Documents/GitHub/mill-sigkill-repro/build.mill",
-        "/Users/tunguyen/Documents/GitHub/mill-sigkill-repro/mill-build/resources",
         "/Users/tunguyen/Documents/GitHub/mill-sigkill-repro/mill-build/compile-resources",
+        "/Users/tunguyen/Documents/GitHub/mill-sigkill-repro/mill-build/resources",
+        "/Users/tunguyen/Documents/GitHub/mill-sigkill-repro/build.mill",
         "/Users/tunguyen/Documents/GitHub/mill-sigkill-repro/mill-build/src"
     ],
     "moduleWatched": [],

@@ -3,7 +3,7 @@
         "ref:v0:c984eca8:/Users/tunguyen/Documents/GitHub/mill-sigkill-repro/mill-build/compile-resources"
     ],
     "valueHash": -1359350899,
-    "inputsHash": -692101840,
+    "inputsHash": 68990095,
     "millVersion": "1.1.5",
     "millJvmVersion": "21.0.10",
     "classLoaderSigHash": 2098141174
